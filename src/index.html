@@ -28,7 +28,7 @@
             <p class="text-center">Loading...</p>
           </div>
           <div id="content" style="display: none;">
-            <table class="table">
+            <!-- <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -36,9 +36,16 @@
                   <th scope="col">Votes</th>
                 </tr>
               </thead>
-              <tbody id="candidatesResults">
+              <tbody id="jobSeekersList">
               </tbody>
-            </table>
+            </table>-->
+             <ul id="seekerList" class="list-unstyled">
+              <div class="seekerTemp" style="display: none">
+                <label>
+                  <span class="content">Task content goes here...</span>
+                </label>
+              </div>
+            </ul>
             <hr/>
             <form onSubmit="App.castVote(); return false;">
               <div class="form-group">

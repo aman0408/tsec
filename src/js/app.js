@@ -64,11 +64,38 @@ App = {
   },
   renderTasks: async() =>{
     const jobSeekerCount=await App.hrProcess.seekerCount();
-    const $seekerCount = $('#')
-    console.log(jobSeekerCount);
-    var jobSeekersList = $("#jobSeekersList");
-    jobSeekersList.text("helo")
-    jobSeekersList.empty();
+    const $seekerTemplate = $('.seekerTemp')
+  
+      // Render out each task with a new task template
+      for (var i = 1; i <= jobSeekerCount; i++) {
+        // Fetch the task data from the blockchain
+        const task = await App.hrProcess.allJobSeekers(i)
+        const taskId = task[0].toNumber()
+        const taskContent = task[1]
+        console.log(taskContent)
+  
+        // Create the html for the task
+        const $newSeekerTemplate = $seekerTemplate.clone()
+        $newSeekerTemplate.find('.content').html(taskContent)
+        // $newTaskTemplate.find('input')
+        //                 .prop('name', taskId)
+        //                 .prop('checked', taskCompleted)
+        //                 .on('click', App.toggleCompleted)
+  
+        // Put the task in the correct list
+       
+        $('#seekerList').append($newSeekerTemplate)
+        
+      
+  
+        // Show the task
+        $newSeekerTemplate.show()
+      }
+    // const $seekerCount = $('#')
+    // console.log(jobSeekerCount);
+    // var jobSeekersList = $("#jobSeekersList");
+    // jobSeekersList.text("helo")
+    // jobSeekersList.empty();
 
     // for(var i=1;i<jobSeekerCount;i++){
     //   const jobSeeker=await App.hrProcess.allJobSeekers(i);
